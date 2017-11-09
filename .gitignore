@@ -1,0 +1,4 @@
+venv/
+proj/dispecer/__pycache__
+proj/dispecer/migrations
+proj/proj/__pycache__
