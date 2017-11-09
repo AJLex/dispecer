@@ -2,12 +2,13 @@
 <html>
     <head>
       <meta charset="utf-8">
+      <link href="/static/css/main.css" rel="stylesheet">
       <title>
         dispecer
       </title>
     </head>
     <body>
-      <h1> Hello!</h1>
+      <h1>Информация по грузовикам</h1>
       <div>
         <form method="post">
           {% csrf_token %}
@@ -16,31 +17,28 @@
               <option disabled>Выберите модель</option>
               <option value="all">Все</option>
               {% for truck in truck_models  %}
-                <option value="{{ truck.model_truck_info__truck_model }}">
-                  {{ truck.model_truck_info__truck_model }}
+                <option value="{{ truck.trucks_info__truck_model }}">
+                  {{ truck.trucks_info__truck_model }}
                 </option>
               {% endfor %}
             </select>
+            <button type="submit" name="send" value="send">Применить</button>
           </p>
-          <p><button type="submit" name="send" value="send">Выбрать</button></p>
         </form>
-        <div id="table_div">
-        <table cellspacing="0" cellpadding="1" border="1">
-          <tr>
-            Информация по грузовикам
-          </tr>
+      </div>
+        <table cellspacing="0" cellpadding="2" border="1">
           <tr>
             <th>Бортовой номер</th>
             <th>Модель</th>
-            <th>Максимальная грузоподъёмность</th>
-            <th>Текущий вес</th>
-            <th>Перегруз</th>
+            <th>Максимальная грузоподъёмность, т</th>
+            <th>Текущий вес, т</th>
+            <th>Перегруз, %</th>
           </tr>
           {% for truck in trucks_info %}
             <tr>
               <td>{{ truck.board_number }}</td>
-              <td>{{ truck.model_truck_info.truck_model }}</td>
-              <td>{{ truck.model_truck_info.carrying_capacity }}</td>
+              <td>{{ truck.trucks_info.truck_model }}</td>
+              <td>{{ truck.trucks_info.carrying_capacity }}</td>
               <td>{{ truck.current_load }}</td>
               {% if truck.over_load > 0 %}
                 <td>{{ truck.over_load }}</td>

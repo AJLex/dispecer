@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import ModelTruckInfo, CurrentTruckInfo
+from .models import TrucksInfo, CurrentTrucksLoad
 
 
-admin.site.register(ModelTruckInfo)
-admin.site.register(CurrentTruckInfo)
+admin.site.register(TrucksInfo)
+admin.site.register(CurrentTrucksLoad)
